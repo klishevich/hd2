@@ -1,2 +1,5 @@
 class Offer < ActiveRecord::Base
+  belongs_to :user
+  has_many :crabs
+  accepts_nested_attributes_for :crabs  
 end

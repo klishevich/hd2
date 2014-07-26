@@ -9,9 +9,16 @@ default: &default
   pool: 5
   timeout: 5000
 
+# development:
+#   <<: *default
+#   database: db/development.sqlite3
+
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: postgresql
+  database: hd2_dev
+  username: postgres
+  password: terra-123
+  host: localhost  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

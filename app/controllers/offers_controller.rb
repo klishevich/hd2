@@ -5,6 +5,7 @@ class OffersController < ApplicationController
 
   def new
     @offer = Offer.new
+    @offer.crabs.build
   end
 
   def create
@@ -38,6 +39,6 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:city, :duration, :description, :email)
+    params.require(:offer).permit(:city, :duration, :description, :email, crabs_attributes: [:id, :name])
   end  
 end

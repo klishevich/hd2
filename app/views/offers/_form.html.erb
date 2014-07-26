@@ -14,6 +14,10 @@
   </div>
   <%= f.submit "Сохранить", class: "btn btn-large btn-primary", id: "Save" %>
   <%= link_to t(:cancel), offers_path, class: "btn btn-large btn-secondary" %>
+  
+  <%= f.fields_for :crabs do |builder| %>
+      <%= render 'crab_fields', :f => builder %>
+  <% end %>  
 <% end %>
 <br/>
 <hr/>
