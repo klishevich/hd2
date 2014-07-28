@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   # devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_scope :user do
+    get "new_user_offer", to: "registrations#new_offer"
+    get "new_user_demand", to: "registrations#new_demand"
+  end
   root 'static_pages#home'
   resources :offers
 
