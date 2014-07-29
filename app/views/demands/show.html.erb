@@ -1,11 +1,14 @@
 <% provide(:title, "show offer") %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  <h1>Show Offer</h1>
-   <%= form_for(@offer) do |f| %>
+  <h1>Show Demand</h1>
+   <%= form_for(@demand) do |f| %>
     <div class="form-group">
-      <%= f.label :city %><%= f.text_field :city, class: "form-control", disabled: true %>
+      <%= f.label :adult %><%= f.text_field :adult, class: "form-control", disabled: true %>
     </div>
+    <div class="form-group">
+      <%= f.label :children %><%= f.text_field :children, class: "form-control", disabled: true %>
+    </div>    
     <div class="form-group">
       <%= f.label :duration %><%= f.text_field :duration, class: "form-control", disabled: true %>
     </div>
@@ -13,12 +16,9 @@
       <%= f.label :description %><%= f.text_field :description, class: "form-control", disabled: true %>
     </div>
     <div class="form-group">
-      <%= f.label :email %><%= f.text_field :email, class: "form-control", disabled: true %>
+      <%= image_tag @demand.image.url(:medium) %>
     </div>
-    <div class="form-group">
-      <%= image_tag @offer.image.url(:medium) %>
-    </div>
-    <%= link_to "К списку", offers_path, class: "btn btn-large btn-secondary" %>
+    <%= link_to "К списку", demands_path, class: "btn btn-large btn-secondary" %>
   <% end %> 
   </div>
 </div>

@@ -10,7 +10,8 @@
             <th>City</th>
             <th>Duration</th>
             <th>Description</th>
-            <th>Email</th>
+            <th>User</th>
+            <th>Image</th>
           </tr>
         </thead>
         <tbody>
@@ -18,11 +19,12 @@
         <% @offers.each do |offer| %>
           <% var += 1 %>
           <tr>
-            <td><%= var %></td>
+            <td><%= link_to var, offer_path(offer) %></td>
             <td><%= offer.city %></td>
             <td><%= offer.duration %> </td>
             <td><%= offer.description %></td>
-            <td><%= offer.email %></td>
+            <td><%= offer.user.email if !offer.user.nil?%></td>
+            <td><%= link_to(image_tag(offer.image.url(:thumb)), offer_path(offer)) %></td>
           </tr>
         <% end %>
         </tbody>

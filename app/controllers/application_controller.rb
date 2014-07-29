@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:city, 
-      offers_attributes: [:id, :city, :duration, :description], 
+      offers_attributes: [:id, :city, :duration, :description, :image], 
       demands_attributes: [:id, :adult, :children, :duration, :description]]
     # if resource_class == User
     # UserSanitizer.new(User, :user, params)

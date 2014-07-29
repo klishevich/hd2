@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Demands list</h1>
+    <%= link_to "Добавить потребность", new_demand_path, class: "btn btn-secondary" %>
+    <div class="bs-example">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Adult</th>
+            <th>Children</th>
+            <th>Duration</th>
+            <th>Description</th>
+            <th>User</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% var = 0 %>
+        <% @demands.each do |demand| %>
+          <% var += 1 %>
+          <tr>
+            <td><%= link_to var, demand_path(demand) %></td>
+            <td><%= demand.adult %></td>
+            <td><%= demand.children %></td>
+            <td><%= demand.duration %> </td>
+            <td><%= demand.description %></td>
+            <td><%= demand.user.email if !demand.user.nil?%></td>
+            <td><%= link_to(image_tag(demand.image.url(:thumb)), demand_path(demand)) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

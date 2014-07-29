@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   root 'static_pages#home'
   resources :offers
+  resources :demands
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,5 +1,5 @@
 <h3>form_for</h3>
-<%= form_for(@offer) do |f| %>
+<%= form_for @offer do |f| %>
   <div class="form-group">
     <%= f.label :city %><%= f.text_field :city, class: "form-control" %>
   </div>
@@ -12,12 +12,18 @@
   <div class="form-group">
     <%= f.label :email %><%= f.text_field :email, class: "form-control" %>
   </div>
+  <div class="form-group">
+    <%= f.file_field :image %>
+  </div>  
   <%= f.submit "Сохранить", class: "btn btn-large btn-primary", id: "Save" %>
   <%= link_to t(:cancel), offers_path, class: "btn btn-large btn-secondary" %>
-  
-  <%= f.fields_for :crabs do |builder| %>
+  <br/>
+  <div>
+    <br/>
+    <%= f.fields_for :crabs do |builder| %>
       <%= render 'crab_fields', :f => builder %>
-  <% end %>  
+    <% end %>  
+  </div>
 <% end %>
 <br/>
 <hr/>
