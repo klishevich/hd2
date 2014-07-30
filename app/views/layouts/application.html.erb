@@ -8,8 +8,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= render 'layouts/navigation' %>
 <div class="container">
-  <%= link_to "Домой", root_path%>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <%= yield %>
