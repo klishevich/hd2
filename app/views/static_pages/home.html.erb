@@ -1,5 +1,69 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag("_slider1.jpg") %>
+      <div class="carousel-caption">
+        Донецк
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag("_slider2.jpg") %>
+      <div class="carousel-caption">
+        фывфыва
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag("_slider3.jpg") %>
+      <div class="carousel-caption">
+        фывфыва
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag("_slider4.jpg") %>
+      <div class="carousel-caption">
+        фывфыва
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag("_slider5.jpg") %>
+      <div class="carousel-caption">
+        фывфыва
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag("_slider6.jpg") %>
+      <div class="carousel-caption">
+        фывфыва
+      </div>
+    </div>                
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
     <h1>Home Page</h1>
     <div><%= link_to "Добавить предложение", new_user_offer_path, class: "btn btn-lg btn-primary" %></div>
     <br/>
@@ -16,3 +80,32 @@
   </div>
 </div>
 </div>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Adult</th>
+            <th>Children</th>
+            <th>Duration</th>
+            <th>Description</th>
+            <th>User</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% var = 0 %>
+        <% @demands.each do |demand| %>
+          <% var += 1 %>
+          <tr>
+            <td><%= link_to var, demand_path(demand) %></td>
+            <td><%= demand.adult %></td>
+            <td><%= demand.children %></td>
+            <td><%= demand.duration %> </td>
+            <td><%= demand.description %></td>
+            <td><%= demand.user.email if !demand.user.nil?%></td>
+            <td><%= link_to(image_tag(demand.image.url(:thumb)), demand_path(demand)) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
