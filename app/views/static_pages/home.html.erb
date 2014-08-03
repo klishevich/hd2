@@ -1,3 +1,4 @@
+<div class="container">
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -16,37 +17,37 @@
     <div class="item active">
       <%= image_tag("_slider1.jpg") %>
       <div class="carousel-caption">
-        Донецк
+        Луганск
       </div>
     </div>
     <div class="item">
       <%= image_tag("_slider2.jpg") %>
       <div class="carousel-caption">
-        фывфыва
+        Луганск
       </div>
     </div>
     <div class="item">
       <%= image_tag("_slider3.jpg") %>
       <div class="carousel-caption">
-        фывфыва
+        Донецк
       </div>
     </div>
     <div class="item">
       <%= image_tag("_slider4.jpg") %>
       <div class="carousel-caption">
-        фывфыва
+        Донецк
       </div>
     </div>
     <div class="item">
       <%= image_tag("_slider5.jpg") %>
       <div class="carousel-caption">
-        фывфыва
+        Донецк
       </div>
     </div>
     <div class="item">
       <%= image_tag("_slider6.jpg") %>
       <div class="carousel-caption">
-        фывфыва
+        Донецк
       </div>
     </div>                
   </div>
@@ -61,51 +62,60 @@
 </div>
 </div>
 </div>
+</div>
 
+<div class="container demand-cont">
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <h1>Home Page</h1>
-    <div><%= link_to "Добавить предложение", new_user_offer_path, class: "btn btn-lg btn-primary" %></div>
-    <br/>
+  <div class="col-md-4 col-md-offset-4">
+    <h1>Потребности</h1>
     <div><%= link_to "Добавить потребность", new_user_demand_path, class: "btn btn-lg btn-primary" %></div>
     <br/>    
-    <div><%= link_to "new_offer_path", new_offer_path, class: "btn btn-lg" %></div> 
+    <div><%= link_to "Все потребности", demands_path, class: "btn btn-lg" %></div>
+    <br/>      
+  </div>
+</div>  
+<div class="row">
+  <% var = 0 %>
+  <% @demands.each do |demand| %>
+    <% var += 1 %>
+      <div class="col-md-6">
+      <p><%= link_to(image_tag(demand.image.url(:medium)), demand_path(demand)) %></p>        
+      <p><%= link_to var, demand_path(demand) %></p>
+      <p><%= demand.adult %></p>
+      <p><%= demand.children %></p>
+      <p><%= demand.duration %> </p>
+      <p><%= demand.description %></p>
+      <p><%= demand.user.email if !demand.user.nil?%></p>        
+      </div>    
+  <% end %>
+</div>
+</div>
+
+<div class="container offer-cont">
+  <div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <h1>Предложения</h1>
+    <div><%= link_to "Добавить предложение", new_user_offer_path, class: "btn btn-lg btn-primary" %></div>
     <br/>
     <div><%= link_to "Все предложения", offers_path, class: "btn btn-lg" %></div>
     <br/>      
     <div><%= link_to "new_demand_path", new_demand_path, class: "btn btn-lg" %></div>
-    <br/>
-    <div><%= link_to "Все потребности", demands_path, class: "btn btn-lg" %></div>
-    <br/>      
+    <br/>     
   </div>
 </div>
+<div class="row">
+  <% var = 0 %>
+  <% @demands.each do |demand| %>
+    <% var += 1 %>
+      <div class="col-md-6">
+      <p><%= link_to(image_tag(demand.image.url(:medium)), demand_path(demand)) %></p>        
+      <p><%= link_to var, demand_path(demand) %></p>
+      <p><%= demand.adult %></p>
+      <p><%= demand.children %></p>
+      <p><%= demand.duration %> </p>
+      <p><%= demand.description %></p>
+      <p><%= demand.user.email if !demand.user.nil?%></p>        
+      </div>    
+  <% end %>
 </div>
-
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Adult</th>
-            <th>Children</th>
-            <th>Duration</th>
-            <th>Description</th>
-            <th>User</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% var = 0 %>
-        <% @demands.each do |demand| %>
-          <% var += 1 %>
-          <tr>
-            <td><%= link_to var, demand_path(demand) %></td>
-            <td><%= demand.adult %></td>
-            <td><%= demand.children %></td>
-            <td><%= demand.duration %> </td>
-            <td><%= demand.description %></td>
-            <td><%= demand.user.email if !demand.user.nil?%></td>
-            <td><%= link_to(image_tag(demand.image.url(:thumb)), demand_path(demand)) %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+</div>
