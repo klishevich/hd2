@@ -65,57 +65,89 @@
 </div>
 
 <div class="container demand-cont">
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <h1>Потребности</h1>
-    <div><%= link_to "Добавить потребность", new_user_demand_path, class: "btn btn-lg btn-primary" %></div>
-    <br/>    
-    <div><%= link_to "Все потребности", demands_path, class: "btn btn-lg" %></div>
-    <br/>      
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1>Потребности</h1>
+      <div><%= link_to "Добавить потребность", new_user_demand_path, class: "btn btn-lg btn-primary" %></div>
+      <br/>    
+      <div><%= link_to "Все потребности", demands_path, class: "btn btn-lg" %></div>
+      <br/>      
+    </div>
+  </div>  
+  <div class="row">
+    <% var = 0 %>
+    <% demand_temp = nil %>
+    <% @demands.each do |demand| %>
+      <% if var % 2 == 0 %>
+        <% demand_temp = demand %>
+      <% end %> 
+      <% if var %2 ==1 %>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-2"> 
+            <p><%= link_to(image_tag(demand_temp.image.url(:medium)), demand_path(demand_temp)) %></p>        
+            <p><%= link_to var, demand_path(demand_temp) %></p>
+            <p><%= demand_temp.adult %></p>
+            <p><%= demand_temp.children %></p>
+            <p><%= demand_temp.duration %> </p>
+            <p><%= demand_temp.description %></p>
+            <p><%= demand_temp.user.email if !demand_temp.user.nil?%></p>           
+          </div>    
+          <div class="col-md-4"> 
+            <p><%= link_to(image_tag(demand.image.url(:medium)), demand_path(demand)) %></p>        
+            <p><%= link_to var, demand_path(demand) %></p>
+            <p><%= demand.adult %></p>
+            <p><%= demand.children %></p>
+            <p><%= demand.duration %> </p>
+            <p><%= demand.description %></p>
+            <p><%= demand.user.email if !demand.user.nil?%></p>           
+          </div>                
+        </div>
+      <% end %>
+      <% var += 1 %>
+    <% end %>
   </div>
-</div>  
-<div class="row">
-  <% var = 0 %>
-  <% @demands.each do |demand| %>
-    <% var += 1 %>
-      <div class="col-md-6">
-      <p><%= link_to(image_tag(demand.image.url(:medium)), demand_path(demand)) %></p>        
-      <p><%= link_to var, demand_path(demand) %></p>
-      <p><%= demand.adult %></p>
-      <p><%= demand.children %></p>
-      <p><%= demand.duration %> </p>
-      <p><%= demand.description %></p>
-      <p><%= demand.user.email if !demand.user.nil?%></p>        
-      </div>    
-  <% end %>
-</div>
 </div>
 
 <div class="container offer-cont">
   <div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <h1>Предложения</h1>
-    <div><%= link_to "Добавить предложение", new_user_offer_path, class: "btn btn-lg btn-primary" %></div>
-    <br/>
-    <div><%= link_to "Все предложения", offers_path, class: "btn btn-lg" %></div>
-    <br/>      
-    <div><%= link_to "new_demand_path", new_demand_path, class: "btn btn-lg" %></div>
-    <br/>     
+    <div class="col-md-8 col-md-offset-2">
+      <h1>Предложения</h1>
+      <div><%= link_to "Добавить предложение", new_user_offer_path, class: "btn btn-lg btn-primary" %></div>
+      <br/>
+      <div><%= link_to "Все предложения", offers_path, class: "btn btn-lg" %></div>
+      <br/>      
+      <!--div><%= link_to "new_demand_path", new_demand_path, class: "btn btn-lg" %></div-->
+      <br/>     
+    </div>
   </div>
-</div>
-<div class="row">
-  <% var = 0 %>
-  <% @demands.each do |demand| %>
-    <% var += 1 %>
-      <div class="col-md-6">
-      <p><%= link_to(image_tag(demand.image.url(:medium)), demand_path(demand)) %></p>        
-      <p><%= link_to var, demand_path(demand) %></p>
-      <p><%= demand.adult %></p>
-      <p><%= demand.children %></p>
-      <p><%= demand.duration %> </p>
-      <p><%= demand.description %></p>
-      <p><%= demand.user.email if !demand.user.nil?%></p>        
-      </div>    
-  <% end %>
-</div>
+  <div class="row">
+    <% var = 0 %>
+    <% offer_temp = nil %>
+    <% @offers.each do |offer| %>
+      <% if var % 2 == 0 %>
+        <% offer_temp = offer %>
+      <% end %> 
+      <% if var %2 ==1 %>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-2"> 
+            <p><%= link_to(image_tag(offer_temp.image.url(:medium)), offer_path(offer_temp)) %></p>        
+            <p><%= link_to var, offer_path(offer_temp) %></p>
+            <p><%= offer_temp.city %></p>
+            <p><%= offer_temp.duration %></p>
+            <p><%= offer_temp.description %> </p>
+            <p><%= offer_temp.user.email if !offer_temp.user.nil?%></p>           
+          </div>    
+          <div class="col-md-4"> 
+            <p><%= link_to(image_tag(offer.image.url(:medium)), offer_path(offer)) %></p>        
+            <p><%= link_to var, offer_path(offer) %></p>
+            <p><%= offer.city %></p>
+            <p><%= offer.duration %></p>
+            <p><%= offer.description %> </p>
+            <p><%= offer.user.email if !offer_temp.user.nil?%></p>          
+          </div>                
+        </div>
+      <% end %>
+      <% var += 1 %>
+    <% end %>
+  </div>  
 </div>
